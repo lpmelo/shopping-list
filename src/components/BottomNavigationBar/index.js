@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { BottomNavigation, Text, useTheme } from "react-native-paper";
+import { useDispatch, useSelector } from "react-redux";
+import { changePageNavigationIndex } from "../../features/global/GlobalSlice";
 import Home from "../Home";
 import style from "./style";
 
@@ -12,6 +14,7 @@ const ProductsRoute = () => <Text>Produtos</Text>;
 const NotificationsRoute = () => <Text>Notifications</Text>;
 
 const BottomNavigationBar = () => {
+  const dispatch = useDispatch();
   const DefaultTheme = useTheme();
   const theme = {
     ...DefaultTheme,
@@ -23,7 +26,12 @@ const BottomNavigationBar = () => {
     },
   };
 
-  const [index, setIndex] = useState(0);
+  const { pageNavigationIndex } = useSelector((state) => state.global);
+
+  const setPageNavigationIndex = (payload) => {
+    dispatch(changePageNavigationIndex(payload));
+  };
+
   const [routes] = useState([
     {
       key: "home",
@@ -60,8 +68,8 @@ const BottomNavigationBar = () => {
 
   return (
     <BottomNavigation
-      navigationState={{ index, routes }}
-      onIndexChange={setIndex}
+      navigationState={{ index: pageNavigationIndex, routes }}
+      onIndexChange={setPageNavigationIndex}
       renderScene={renderScene}
       barStyle={style.barStyle}
       theme={theme}

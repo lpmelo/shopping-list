@@ -15,6 +15,12 @@ const style = StyleSheet.create({
     fontSize: 40,
     textAlign: "left",
   },
+  listTitle: {
+    marginTop: 60,
+    marginLeft: 10,
+    fontSize: 28,
+    textAlign: "left",
+  },
   card: {
     width: "100%",
     paddingTop: 300,
@@ -31,6 +37,18 @@ const style = StyleSheet.create({
     height: 200,
     marginLeft: 7,
     marginRight: 7,
+  },
+  dialogTitle: {
+    textAlign: "center",
+  },
+  dialogTextContent: {
+    textAlign: "justify",
+    marginTop: 30,
+  },
+  dialogImage: {
+    height: "55%",
+    width: "100%",
+    borderRadius: 5,
   },
 });
 
